@@ -4,3 +4,6 @@
 [submodule "repos/nerdtree"]
 	path = repos/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
+[submodule "repos/comments"]
+	path = repos/comments
+	url = git@github.com:ibnfirnas/vim-comments.git
