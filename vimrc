@@ -40,6 +40,7 @@ set nofoldenable
 "==============================================================================
 if has("gui_macvim")
     set t_Co=256
+    colorscheme twilight
     set guifont=Menlo:h14
     set transparency=3
     set cursorline
