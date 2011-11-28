@@ -43,19 +43,6 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 
 "==============================================================================
-" MacVim
-"==============================================================================
-if has("gui_macvim")
-    set t_Co=256
-    colorscheme twilight
-    set guifont=Menlo:h14
-    set transparency=3
-    set cursorline
-    highlight CursorLine term=underline cterm=underline guibg=Grey22
-endif
-
-
-"==============================================================================
 " Style enforcement
 "==============================================================================
 

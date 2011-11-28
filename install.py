@@ -8,7 +8,7 @@ import shutil
 PATH_DIR__THIS = os.path.abspath(os.path.dirname(__file__))
 PATH_DIR__HOME = os.path.expanduser('~')
 
-PROJECT_NODES = ['.vim', '.vimrc']
+PROJECT_NODES = ['.vim', '.vimrc', '.gvimrc']
 
 
 def main():
