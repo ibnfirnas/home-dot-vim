@@ -17,7 +17,7 @@ def main():
         dst_path = os.path.join(PATH_DIR__HOME, node)
 
         if os.path.exists(dst_path):
-            shutil.move(dst_path, '{0}.bak'.format(dst_path))
+            shutil.move(dst_path, '%s.bak' % dst_path)
 
         os.symlink(src_path, dst_path)
 
