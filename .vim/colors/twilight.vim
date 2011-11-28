@@ -73,9 +73,9 @@ exe 'hi String         guifg='.s:green             .' guibg='.s:darkgrey        
 exe 'hi Special        guifg='.s:lightgreen        .' guibg='.s:darkgrey        .' gui=none'
 
 exe 'hi Identifier     guifg='.s:grey_blue         .' guibg='.s:darkgrey        .' gui=none'
-exe 'hi Statement      guifg='.s:beige             .' guibg='.s:darkgrey        .' gui=none'
-exe 'hi Conditional    guifg='.s:beige             .' guibg='.s:darkgrey        .' gui=none'
-exe 'hi Repeat         guifg='.s:beige             .' guibg='.s:darkgrey        .' gui=none'
+exe 'hi Statement      guifg='.s:beige             .' guibg='.s:darkgrey        .' gui=bold'
+exe 'hi Conditional    guifg='.s:beige             .' guibg='.s:darkgrey        .' gui=bold'
+exe 'hi Repeat         guifg='.s:beige             .' guibg='.s:darkgrey        .' gui=bold'
 exe 'hi Structure      guifg='.s:beige             .' guibg='.s:darkgrey        .' gui=none'
 exe 'hi Function       guifg='.s:violet            .' guibg='.s:darkgrey        .' gui=none'
 
