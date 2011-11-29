@@ -1,9 +1,9 @@
-[submodule "repos/vimerl"]
-	path = repos/vimerl
+[submodule "deps/vimerl"]
+	path = deps/vimerl
 	url = git://github.com/jimenezrick/vimerl.git
-[submodule "repos/nerdtree"]
-	path = repos/nerdtree
+[submodule "deps/nerdtree"]
+	path = deps/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
-[submodule "repos/comments"]
-	path = repos/comments
+[submodule "deps/comments"]
+	path = deps/comments
 	url = git@github.com:ibnfirnas/vim-comments.git
