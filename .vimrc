@@ -60,7 +60,6 @@ match ErrorMsg '\%>79v.\+'
 "------------------------------------------------------------------------------
 " Python
 "------------------------------------------------------------------------------
-let python_highlight_all=1
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 
