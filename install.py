@@ -13,6 +13,9 @@ PROJECT_NODES = ['.vim', '.vimrc', '.gvimrc']
 
 
 def main():
+    os.system('git submodule init')
+    os.system('git submodule update')
+
     for node in PROJECT_NODES:
         src_path = os.path.join(PATH_DIR__SRC, node)
         dst_path = os.path.join(PATH_DIR__HOME, node)
