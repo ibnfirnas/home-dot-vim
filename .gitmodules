@@ -6,4 +6,4 @@
 	url = git://github.com/scrooloose/nerdtree.git
 [submodule "deps/comments"]
 	path = deps/comments
-	url = git@github.com:ibnfirnas/vim-comments.git
+    url = git://github.com/ibnfirnas/vim-comments.git
