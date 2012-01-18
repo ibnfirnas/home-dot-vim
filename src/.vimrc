@@ -8,6 +8,9 @@ set splitright splitbelow
 filetype on
 filetype plugin on
 
+" Enable backspace key
+set bs=2
+
 
 "------------------------------------------------------------------------------
 " Color
