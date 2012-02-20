@@ -4,6 +4,7 @@
 
 set nocompatible
 set nu
+set ruler
 set splitright splitbelow
 filetype on
 filetype plugin on
