@@ -1,16 +1,18 @@
 "==============================================================================
-" Deafults
+" Defaults
 "==============================================================================
 
-set nocompatible
-set nu
-set ruler
-set splitright splitbelow
+"------------------------------------------------------------------------------
+" General
+"------------------------------------------------------------------------------
+set nocompatible            " Because plain vi is a bit annoying
+set nu                      " Line numbers in gutter
+set ruler                   " Line and column numbers in status
+set splitright splitbelow   " Split window order
+set bs=2                    " Enable backspace key
+
 filetype on
 filetype plugin on
-
-" Enable backspace key
-set bs=2
 
 
 "------------------------------------------------------------------------------
@@ -45,15 +47,9 @@ set textwidth=79
 "------------------------------------------------------------------------------
 " Style enforcement
 "------------------------------------------------------------------------------
-
-" Lines too long
-match ErrorMsg '\%>79v.\+'
-
-" Trailing whitespace
-2match ErrorMsg '\s\+$'
-
-" Tabs
-3match ErrorMsg '\t'
+match  ErrorMsg '\%>79v.\+' " Lines too long
+2match ErrorMsg '\s\+$'     " Trailing whitespace
+3match ErrorMsg '\t'        " Tabs
 
 
 "==============================================================================
