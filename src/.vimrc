@@ -66,3 +66,8 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 " OCaml
 "------------------------------------------------------------------------------
 autocmd FileType omlet set tabstop=2 | set softtabstop=2 | set shiftwidth=2
+
+"------------------------------------------------------------------------------
+" Git commit
+"------------------------------------------------------------------------------
+autocmd FileType gitcommit set spell
