@@ -71,3 +71,8 @@ autocmd FileType omlet set tabstop=2 | set softtabstop=2 | set shiftwidth=2
 " Git commit
 "------------------------------------------------------------------------------
 autocmd FileType gitcommit set spell
+
+"------------------------------------------------------------------------------
+" Markdown
+"------------------------------------------------------------------------------
+autocmd FileType markdown set spell
