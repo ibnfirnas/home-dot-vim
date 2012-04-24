@@ -10,3 +10,6 @@
 [submodule "deps/vim-markdown"]
 	path = deps/vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
+[submodule "deps/vim-colors-solarized"]
+	path = deps/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
