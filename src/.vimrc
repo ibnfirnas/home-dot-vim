@@ -19,8 +19,10 @@ filetype plugin on
 " Color
 "------------------------------------------------------------------------------
 syntax enable
-colorscheme elflord
 set background=dark
+let g:solarized_termcolors=16
+let g:solarized_bold=1
+colorscheme solarized
 
 
 "------------------------------------------------------------------------------
