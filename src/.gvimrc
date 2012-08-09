@@ -28,5 +28,5 @@ highlight CursorLine term=underline cterm=underline guibg=Grey22
 "==============================================================================
 if has("gui_macvim")
     set guifont=Menlo:h14
-    set transparency=3
+    "set transparency=3
 endif
