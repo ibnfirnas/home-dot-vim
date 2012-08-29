@@ -291,4 +291,3 @@ if main_syntax == "html"
 endif
 
 " vim: set et sts=2 sw=2:
-[edit]
