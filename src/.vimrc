@@ -68,3 +68,6 @@ autocmd FileType gitcommit set spell
 
 " Markdown
 autocmd FileType markdown set spell
+
+" HTML
+autocmd FileType html set spell
