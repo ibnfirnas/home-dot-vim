@@ -64,6 +64,9 @@ match  ErrorMsg '\%>79v.\+' " Lines too long
 " Per FileType overrides
 "==============================================================================
 
+" R
+autocmd FileType r set tabstop=2 | set softtabstop=2 | set shiftwidth=2
+
 " Python
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
