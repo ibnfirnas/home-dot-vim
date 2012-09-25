@@ -16,3 +16,6 @@
 [submodule "deps/fsharp-vim"]
 	path = deps/fsharp-vim
 	url = git://github.com/kongo2002/fsharp-vim.git
+[submodule "deps/coq.vim"]
+	path = deps/coq.vim
+	url = git://github.com/jvoorhis/coq.vim.git
