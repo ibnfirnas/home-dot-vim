@@ -22,3 +22,6 @@
 [submodule "deps/vim4rally"]
 	path = deps/vim4rally
 	url = git://github.com/davidpthomas/vim4rally.git
+[submodule "deps/haskell-mode-vim"]
+	path = deps/haskell-mode-vim
+	url = git://github.com/haskell/haskell-mode-vim.git
