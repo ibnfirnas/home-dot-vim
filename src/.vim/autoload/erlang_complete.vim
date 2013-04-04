@@ -4,23 +4,12 @@
 " Contributors: kTT (http://github.com/kTT)
 "               Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 "               Eduardo Lopez (http://github.com/tapichu)
-" Version:      2011/09/29
+"               Zhihui Jiao (http://github.com/onlychoice)
+" License:      Vim license
+" Version:      2012/11/26
 
-" Completion options
-if !exists('g:erlang_completion_grep')
-	let g:erlang_completion_grep = 'grep'
-endif
-
-if !exists('g:erlang_man_extension')
-	let g:erlang_man_extension = ''
-endif
-
-if !exists('g:erlang_man_path')
-	let g:erlang_man_path = '/usr/lib/erlang/man'
-endif
-
-if !exists('g:erlang_completion_display_doc')
-	let g:erlang_completion_display_doc = 1
+if !exists('g:erlang_completion_cache')
+	let g:erlang_completion_cache = 1
 endif
 
 " Completion program path
@@ -28,6 +17,13 @@ let s:erlang_complete_file = expand('<sfile>:p:h') . '/erlang_complete.erl'
 
 " Modules cache used to speed up the completion
 let s:modules_cache = {}
+
+" File cache for persistence between Vim sessions
+if filewritable(expand('<sfile>:p:h')) == 2
+	let s:file_cache = expand('<sfile>:p:h') . '/vimerl_cache'
+else
+	let s:file_cache = '/tmp/vimerl_cache'
+endif
 
 " Patterns for completions
 let s:erlang_local_func_beg    = '\(\<[0-9A-Za-z_-]*\|\s*\)$'
@@ -102,19 +98,6 @@ endfunction
 
 " Find external function names
 function s:ErlangFindExternalFunc(module, base)
-	" If it is a local module, try to compile it when the .beam
-	" doesn't exist or is old
-	if filereadable(a:module . '.erl')
-		if !filereadable(a:module . '.beam') ||
-				\ getftime(a:module . '.erl') > getftime(a:module . '.beam')
-			if has_key(s:modules_cache, a:module)
-				call remove(s:modules_cache, a:module)
-			endif
-			silent execute '!erlc' a:module . '.erl' '>/dev/null' '2>/dev/null'
-			redraw!
-		endif
-	endif
-
 	" If the module is cached, load its functions
 	if has_key(s:modules_cache, a:module)
 		for field_cache in get(s:modules_cache, a:module)
@@ -127,41 +110,16 @@ function s:ErlangFindExternalFunc(module, base)
 	endif
 
 	let functions = system(s:erlang_complete_file . ' ' . a:module)
-	for element in sort(split(functions, '\n'))
-		if match(element, a:base) == 0
-			let function_name = matchstr(element, a:base . '\w*')
-			let number_of_args = matchstr(element, '\d\+', len(function_name))
-			let number_of_comma = max([number_of_args - 1, 0])
-			let file_path = g:erlang_man_path . '/man?/' . a:module . '.?' . g:erlang_man_extension
-			let description = ''
-
-			" Don't look man pages if the module is present in the current directory
-			if g:erlang_completion_display_doc != 0 && !filereadable(a:module . '.erl')
-				let system_command = g:erlang_completion_grep . ' -A 1 "\.B" ' . file_path .
-						   \ ' | grep -EZo "\<' . function_name . '\>\((\[?\w+,\]? ){' .
-						   \ number_of_comma . '}[^),]*\) -> .*"'
-				let description = system(system_command)
-
-				" Cutting some weird characters at the end with `[:-2]'
-				" because grep doesn't support multilines, so we have to
-				" filter first by `.B' and next by looking via function
-				" name, if someone have a better idea, please change it
-				let description = description[:-2]
-			endif
-
-			if description == ''
-				" If function doesn't have a description e.g.
-				" lists:rmerge, put rmerge/2 instead
-				let description = element
-			endif
-
-			let field = {'word': function_name . '(', 'abbr': description,
-				  \  'kind': 'f', 'dup': 1} " Allow duplicated functions
+	for function_spec in split(functions, '\n')
+		if match(function_spec, a:base) == 0
+			let function_name = matchstr(function_spec, a:base . '\w*')
+			let field = {'word': function_name . '(', 'abbr': function_spec,
+				  \  'kind': 'f', 'dup': 1}
 			call complete_add(field)
 
 			" Populate the cache only when iterating over all the
 			" module functions (i.e. no prefix for the completion)
-			if a:base == ''
+			if g:erlang_completion_cache && a:base == ''
 				if !has_key(s:modules_cache, a:module)
 					let s:modules_cache[a:module] = [field]
 				else
@@ -180,6 +138,8 @@ function s:ErlangFindExternalFunc(module, base)
 			endif
 		endif
 	endfor
+
+	call s:ErlangWriteCache(a:module)
 
 	return []
 endfunction
@@ -206,3 +166,54 @@ function s:ErlangFindLocalFunc(base)
 
 	return []
 endfunction
+
+function s:ErlangLoadCache()
+	if filereadable(s:file_cache)
+		for line in readfile(s:file_cache)
+			let cache_entry = eval(line)
+			" cache_entry is a dict with just one key with the
+			" module name and the function list we are going to
+			" add to the memory cache as the value of this key
+			for mod_name in keys(cache_entry)
+				let func_list = get(cache_entry, mod_name)
+				let s:modules_cache[mod_name] = func_list
+			endfor
+		endfor
+	endif
+endfunction
+
+function s:ErlangWriteCache(module)
+	" Write all the module functions to the cache file
+	if has_key(s:modules_cache, a:module)
+		let func_list = get(s:modules_cache, a:module)
+		if len(func_list) > 0
+			let cache_entry = {a:module : func_list}
+			execute 'redir >>' . s:file_cache
+			silent echon cache_entry
+			silent echon "\n"
+			redir END
+		endif
+	endif
+endfunction
+
+function s:ErlangPurgeCache(...)
+	for mod_name in a:000
+		if has_key(s:modules_cache, mod_name)
+			call remove(s:modules_cache, mod_name)
+		endif
+	endfor
+
+	" Delete the old cache file
+	call delete(s:file_cache)
+
+	" Write a new one
+	for mod_name in keys(s:modules_cache)
+		call s:ErlangWriteCache(mod_name)
+	endfor
+endfunction
+
+" Load the file cache when this script is autoloaded
+call s:ErlangLoadCache()
+
+" Command for removing modules from the cache
+command -nargs=+ ErlangPurgeCache silent call s:ErlangPurgeCache(<f-args>)
