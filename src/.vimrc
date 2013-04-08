@@ -89,3 +89,6 @@ autocmd FileType mediawiki set tabstop=2 | set softtabstop=2 | set shiftwidth=2
 
 " Tiger
 autocmd BufNewFile,BufRead *.tig set filetype=tiger
+
+" SML
+autocmd BufNewFile,BufRead *.sig set filetype=sml
