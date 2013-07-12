@@ -10,6 +10,7 @@ set nu                      " Line numbers in gutter
 set ruler                   " Line and column numbers in status
 set splitright splitbelow   " Split window order
 set bs=2                    " Enable backspace key
+set cursorline
 
 filetype on
 filetype plugin on
