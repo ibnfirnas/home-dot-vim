@@ -56,7 +56,8 @@ set nofoldenable
 "------------------------------------------------------------------------------
 " Style enforcement
 "------------------------------------------------------------------------------
-match  ErrorMsg '\%>79v.\+' " Lines too long
+let &colorcolumn=join(range(80,999),",")
+"match  ErrorMsg '\%>79v.\+' " Lines too long
 2match ErrorMsg '\s\+$'     " Trailing whitespace
 3match ErrorMsg '\t'        " Tabs
 
