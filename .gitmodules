@@ -25,3 +25,6 @@
 [submodule "deps/tiger.vim-syntax"]
 	path = deps/tiger.vim-syntax
 	url = git://github.com/vim-scripts/tiger.vim-syntax.git
+[submodule "deps/idris-vim"]
+	path = deps/idris-vim
+	url = https://github.com/idris-hackers/idris-vim.git
