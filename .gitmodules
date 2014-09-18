@@ -28,3 +28,9 @@
 [submodule "deps/idris-vim"]
 	path = deps/idris-vim
 	url = https://github.com/idris-hackers/idris-vim.git
+[submodule "deps/coquille"]
+	path = deps/coquille
+	url = https://github.com/the-lambda-church/coquille.git
+[submodule "deps/vimbufsync"]
+	path = deps/vimbufsync
+	url = https://github.com/def-lkb/vimbufsync.git
