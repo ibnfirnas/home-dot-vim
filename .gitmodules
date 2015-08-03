@@ -19,9 +19,6 @@
 [submodule "deps/coq.vim"]
 	path = deps/coq.vim
 	url = git://github.com/jvoorhis/coq.vim.git
-[submodule "deps/haskell-mode-vim"]
-	path = deps/haskell-mode-vim
-	url = git://github.com/haskell/haskell-mode-vim.git
 [submodule "deps/tiger.vim-syntax"]
 	path = deps/tiger.vim-syntax
 	url = git://github.com/vim-scripts/tiger.vim-syntax.git
