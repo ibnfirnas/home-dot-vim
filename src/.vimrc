@@ -11,7 +11,8 @@ set ruler                   " Line and column numbers in status
 set splitright splitbelow   " Split window order
 set bs=2                    " Enable backspace key
 set history=1000            " Bump history from default of 20
-
+set modeline
+set modelines=1
 filetype on
 filetype plugin on
 
