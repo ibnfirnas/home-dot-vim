@@ -1,1 +1,2 @@
 *.netrwhist
+src/.vim/autoload/vimerl_cache
