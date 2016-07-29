@@ -101,3 +101,6 @@ autocmd BufNewFile,BufRead *.tig set filetype=tiger
 
 " SML
 autocmd BufNewFile,BufRead *.sig set filetype=sml
+
+" TypeScript
+let g:tsuquyomi_completion_detail = 1
