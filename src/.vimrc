@@ -98,9 +98,6 @@ autocmd BufNewFile,BufRead *.tig set filetype=tiger
 " SML
 autocmd BufNewFile,BufRead *.sig set filetype=sml
 
-" TypeScript
-let g:tsuquyomi_completion_detail = 1
-
 " Mathematica
 autocmd BufNewFile,BufRead *.m  set filetype=mma
 autocmd BufNewFile,BufRead *.mt set filetype=mma
@@ -116,3 +113,8 @@ let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 
 " merlin
 execute ":set rtp+=" . g:opamshare . "/merlin/vim"
+
+" -----------------------------------------------------------------------------
+" TypeScript
+" -----------------------------------------------------------------------------
+let g:tsuquyomi_completion_detail = 1
