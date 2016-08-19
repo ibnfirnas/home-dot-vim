@@ -110,3 +110,9 @@ autocmd BufNewFile,BufRead *.mt set filetype=mma
 " -----------------------------------------------------------------------------
 autocmd FileType ocaml set tabstop=2 | set softtabstop=2 | set shiftwidth=2
 autocmd FileType omlet set tabstop=2 | set softtabstop=2 | set shiftwidth=2
+
+" OPAM
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+
+" merlin
+execute ":set rtp+=" . g:opamshare . "/merlin/vim"
