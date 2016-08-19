@@ -142,7 +142,7 @@ function! CommentLine()
     endif
   " for .vim files use "
   elseif file_name =~ '\.vim$' || file_name =~ '\.vimrc$'
-	 execute ":silent! normal ^i\"\<ESC>\<down>^"
+     execute ":silent! normal ^i\"\<ESC>\<down>^"
   " for .sql files use --
   elseif file_name =~ '\.sql$'
     execute ":silent! normal ^i--\<ESC>\<down>^"
@@ -180,7 +180,7 @@ function! UnCommentLine()
   " for .ml or .mli
   elseif file_name =~ '\.ml$' || file_name =~ '\.mli$' || file_name =~ '\.mll$' || file_name =~ '\.mly$'
     execute ":silent! normal :nohlsearch\<CR>:s/(\\*//\<CR>:nohlsearch\<CR>"
-	execute ":silent! normal :nohlsearch\<CR>:s/\\*)//\<CR>:nohlsearch\<CR>=="
+    execute ":silent! normal :nohlsearch\<CR>:s/\\*)//\<CR>:nohlsearch\<CR>=="
   " for .c or .h or .pc or .css files use /* */
   elseif file_name =~ '\.c$' || file_name =~ '\.h$' || file_name =~ '\.pc$' || file_name =~ '\.css$' || file_name =~ '\.js$' || file_name =~ '\.ts$'
     execute ":silent! normal :nohlsearch\<CR>:s/\\/\\*//\<CR>:s/\\*\\///\<CR>:nohlsearch\<CR>=="
@@ -255,7 +255,7 @@ function! RangeCommentLine()
   elseif file_name =~ '\.ml$' || file_name =~ '\.mli$' || file_name =~ '\.mll$' || file_name =~ '\.mly$'
     if stridx(getline("."), "\(\*") == -1 && stridx(getline("."), "\*)/") == -1
       execute ":silent! normal ^i\(*\<ESC>$a*)\<ESC>==\<down>^"
-	endif
+    endif
   " for .vim files use --
   elseif file_name =~ '\.vim$' || file_name =~ '\.vimrc$'
     execute ":silent! normal :s/\\S/\\\"\\0/\<CR>:nohlsearch<CR>"
