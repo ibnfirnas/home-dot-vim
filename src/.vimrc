@@ -118,3 +118,4 @@ execute ":set rtp+=" . g:opamshare . "/merlin/vim"
 " TypeScript
 " -----------------------------------------------------------------------------
 let g:tsuquyomi_completion_detail = 1
+let g:tsuquyomi_use_local_typescript = 0
