@@ -129,7 +129,12 @@ function! CommentLine()
     if stridx(getline("."), "\(\*") == -1 && stridx(getline("."), "\*)") == -1
       execute ":silent! normal ^i(*\<ESC>$a*)\<ESC>==\<down>^"
     endif
-    " .html,.xml,.xthml,.htm
+  "for Mathematica files use (* *)
+  elseif file_name =~ '\.nb$' || file_name =~ '\.m$' || file_name =~ '\.mt$'
+    if stridx(getline("."), "\(\*") == -1 && stridx(getline("."), "\*)") == -1
+      execute ":silent! normal ^i(*\<ESC>$a*)\<ESC>==\<down>^"
+    endif
+  " .html,.xml,.xthml,.htm
   elseif file_name =~ '\.html$' || file_name =~ '\.htm$' || file_name =~ '\.xml$' || file_name =~ '\.xhtml$'
     if stridx( getline("."), "\<!--" ) != -1 && stridx( getline("."), "--\>" ) != -1
     elseif stridx( getline("."), "\<!--" ) != -1 && stridx( getline("."), "--\>" ) == -1
@@ -179,6 +184,10 @@ function! UnCommentLine()
     execute ":silent! normal :nohlsearch\<CR>:s/\\/\\///\<CR>:nohlsearch\<CR>=="
   " for .ml or .mli
   elseif file_name =~ '\.ml$' || file_name =~ '\.mli$' || file_name =~ '\.mll$' || file_name =~ '\.mly$'
+    execute ":silent! normal :nohlsearch\<CR>:s/(\\*//\<CR>:nohlsearch\<CR>"
+    execute ":silent! normal :nohlsearch\<CR>:s/\\*)//\<CR>:nohlsearch\<CR>=="
+  " for Mathematica
+  elseif file_name =~ '\.nb$' || file_name =~ '\.m$' || file_name =~ '\.mt$'
     execute ":silent! normal :nohlsearch\<CR>:s/(\\*//\<CR>:nohlsearch\<CR>"
     execute ":silent! normal :nohlsearch\<CR>:s/\\*)//\<CR>:nohlsearch\<CR>=="
   " for .c or .h or .pc or .css files use /* */
@@ -256,6 +265,11 @@ function! RangeCommentLine()
     if stridx(getline("."), "\(\*") == -1 && stridx(getline("."), "\*)/") == -1
       execute ":silent! normal ^i\(*\<ESC>$a*)\<ESC>==\<down>^"
     endif
+   " for Mathematica files use (* *)
+  elseif file_name =~ '\.nb$' || file_name =~ '\.m$' || file_name =~ '\.mt$'
+    if stridx(getline("."), "\(\*") == -1 && stridx(getline("."), "\*)/") == -1
+      execute ":silent! normal ^i\(*\<ESC>$a*)\<ESC>==\<down>^"
+    endif
   " for .vim files use --
   elseif file_name =~ '\.vim$' || file_name =~ '\.vimrc$'
     execute ":silent! normal :s/\\S/\\\"\\0/\<CR>:nohlsearch<CR>"
@@ -304,6 +318,10 @@ function! RangeUnCommentLine()
     execute ":silent! normal :s/\\-\\-//\<CR>:nohlsearch\<CR>"
   " for .ml .mli
   elseif file_name =~ '\.ml$' || file_name =~ '\.mli$' || file_name =~ '\.mll$' || file_name =~ '\.mly$'
+    execute ":silent! normal :nohlsearch\<CR>:s/(\\*//\<CR>=="
+    execute ":silent! normal :nohlsearch\<CR>:s/\\*)//\<CR>=="
+  " for Mathematica
+  elseif file_name =~ '\.nb$' || file_name =~ '\.m$' || file_name =~ '\.mt$'
     execute ":silent! normal :nohlsearch\<CR>:s/(\\*//\<CR>=="
     execute ":silent! normal :nohlsearch\<CR>:s/\\*)//\<CR>=="
   " for .xml .html .xhtml .htm use <!-- -->
