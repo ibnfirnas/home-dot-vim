@@ -104,3 +104,7 @@ autocmd BufNewFile,BufRead *.sig set filetype=sml
 
 " TypeScript
 let g:tsuquyomi_completion_detail = 1
+
+" Mathematica
+autocmd BufNewFile,BufRead *.m  set filetype=mma
+autocmd BufNewFile,BufRead *.mt set filetype=mma
