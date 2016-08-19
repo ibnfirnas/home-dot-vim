@@ -79,10 +79,6 @@ autocmd FileType r set tabstop=2 | set softtabstop=2 | set shiftwidth=2
 " Python
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-" OCaml
-autocmd FileType ocaml set tabstop=2 | set softtabstop=2 | set shiftwidth=2
-autocmd FileType omlet set tabstop=2 | set softtabstop=2 | set shiftwidth=2
-
 " Git commit
 autocmd FileType gitcommit set spell
 
@@ -108,3 +104,9 @@ let g:tsuquyomi_completion_detail = 1
 " Mathematica
 autocmd BufNewFile,BufRead *.m  set filetype=mma
 autocmd BufNewFile,BufRead *.mt set filetype=mma
+
+" -----------------------------------------------------------------------------
+" OCaml
+" -----------------------------------------------------------------------------
+autocmd FileType ocaml set tabstop=2 | set softtabstop=2 | set shiftwidth=2
+autocmd FileType omlet set tabstop=2 | set softtabstop=2 | set shiftwidth=2
