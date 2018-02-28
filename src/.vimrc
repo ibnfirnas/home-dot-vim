@@ -37,7 +37,7 @@ colorscheme solarized
 "------------------------------------------------------------------------------
 set hlsearch
 set incsearch
-set ignorecase
+set noignorecase
 set smartcase
 
 
