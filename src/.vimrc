@@ -63,11 +63,14 @@ set nofoldenable
 "------------------------------------------------------------------------------
 " Style enforcement
 "------------------------------------------------------------------------------
+" Lines too-long
 let &colorcolumn=join(range(80,999),",")
-"match  ErrorMsg '\%>79v.\+' " Lines too long
-2match ErrorMsg '\s\+$'     " Trailing whitespace
-3match ErrorMsg '\t'        " Tabs
+"match  ErrorMsg '\%>79v.\+'
 
+match  ErrorMsg '\s\+$'  " Trailing whitespace
+2match ErrorMsg '\t'     " Tabs
+
+" TODO: How to match more than 2 things? 3match is reserved for brackets.
 
 "==============================================================================
 " Per FileType overrides
