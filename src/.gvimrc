@@ -2,18 +2,18 @@
 " Color
 "==============================================================================
 set t_Co=256
-colorscheme solarized
-let g:solarized_termcolors=256     "default value is 16
-let g:solarized_contrast="high"    "default value is normal
-let g:solarized_visibility="high"  "default value is normal
-let g:solarized_diffmode="high"    "default value is normal
-let g:solarized_hitrail=1          "default value is 0
+"colorscheme solarized
+"let g:solarized_termcolors=256     "default value is 16
+"let g:solarized_contrast="high"    "default value is normal
+"let g:solarized_visibility="high"  "default value is normal
+"let g:solarized_diffmode="high"    "default value is normal
+"let g:solarized_hitrail=1          "default value is 0
 
 
 "==============================================================================
 " Font
 "==============================================================================
-set guifont=Monospace\ 10
+set guifont=Terminus\ 10
 
 
 "==============================================================================

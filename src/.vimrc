@@ -19,17 +19,19 @@ set bs=2                    " Enable backspace key
 set history=1000            " Bump history from default of 20
 set modeline
 set modelines=1
+set ttimeoutlen=100         " Reduce delay when addinng libe above ("O")
 filetype on
 filetype plugin on
-
 
 "------------------------------------------------------------------------------
 " Color
 "------------------------------------------------------------------------------
-set t_Co=16
+set t_Co=256
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme zenburn
+"hi Normal guibg=NONE    " Transparency
+"hi Normal ctermbg=NONE  " Transparency
 
 
 "------------------------------------------------------------------------------
@@ -59,12 +61,11 @@ set textwidth=79
 set foldmethod=indent
 set nofoldenable
 
-
 "------------------------------------------------------------------------------
 " Style enforcement
 "------------------------------------------------------------------------------
 " Lines too-long
-let &colorcolumn=join(range(80,999),",")
+let &colorcolumn=join(range(80,80),",")
 "match  ErrorMsg '\%>79v.\+'
 
 match  ErrorMsg '\s\+$'  " Trailing whitespace
@@ -104,6 +105,7 @@ autocmd BufNewFile,BufRead *.sig set filetype=sml
 " Mathematica
 autocmd BufNewFile,BufRead *.m  set filetype=mma
 autocmd BufNewFile,BufRead *.mt set filetype=mma
+autocmd FileType mma set tabstop=2 | set softtabstop=2 | set shiftwidth=2
 
 " -----------------------------------------------------------------------------
 " OCaml
@@ -120,5 +122,5 @@ execute ":set rtp+=" . g:opamshare . "/merlin/vim"
 " -----------------------------------------------------------------------------
 " TypeScript
 " -----------------------------------------------------------------------------
-let g:tsuquyomi_completion_detail = 1
-let g:tsuquyomi_use_local_typescript = 0
+"let g:tsuquyomi_completion_detail = 1
+"let g:tsuquyomi_use_local_typescript = 0
