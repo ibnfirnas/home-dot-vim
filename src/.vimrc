@@ -20,6 +20,7 @@ set history=1000            " Bump history from default of 20
 set modeline
 set modelines=1
 set ttimeoutlen=100         " Reduce delay when addinng libe above ("O")
+set fileformats=unix
 filetype on
 filetype plugin on
 
