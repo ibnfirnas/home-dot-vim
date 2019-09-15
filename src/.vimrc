@@ -71,13 +71,16 @@ let &colorcolumn=join(range(80,80),",")
 "match  ErrorMsg '\%>79v.\+'
 
 match  ErrorMsg '\s\+$'  " Trailing whitespace
-2match ErrorMsg '\t'     " Tabs
+"2match ErrorMsg '\t'     " Tabs
 
 " TODO: How to match more than 2 things? 3match is reserved for brackets.
 
 "==============================================================================
 " Per FileType overrides
 "==============================================================================
+
+" C
+autocmd FileType c set noexpandtab | set shiftwidth=8 | set tabstop=8 | set softtabstop=8
 
 " R
 autocmd FileType r set tabstop=2 | set softtabstop=2 | set shiftwidth=2
