@@ -112,6 +112,9 @@ autocmd BufNewFile,BufRead *.m  set filetype=mma
 autocmd BufNewFile,BufRead *.mt set filetype=mma
 autocmd FileType mma set tabstop=2 | set softtabstop=2 | set shiftwidth=2
 
+" F#
+autocmd FileType fsharp set tabstop=4 | set softtabstop=4 | set shiftwidth=4
+
 " -----------------------------------------------------------------------------
 " OCaml
 " -----------------------------------------------------------------------------
