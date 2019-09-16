@@ -124,6 +124,9 @@ function! CommentLine()
     elseif stridx(getline("."), "\/\*") == -1 && stridx(getline("."), "\*\/") == -1
       execute ":silent! normal ^i/*\<ESC>$a*/\<ESC>==\<down>^"
     endif
+  " for .fs or .fsi //
+  elseif file_name =~ '\.fs$' || file_name =~ '\.fsi$'
+    execute ":silent! normal ^i//\<ESC>==\<down>^"
   "for .ml or .mli files use (* *)
   elseif file_name =~ '\.ml$' || file_name =~ '\.mli$' || file_name =~ '\.mll$' || file_name =~ '\.mly$'
     if stridx(getline("."), "\(\*") == -1 && stridx(getline("."), "\*)") == -1
@@ -182,6 +185,9 @@ function! UnCommentLine()
   " for .cpp or .hpp or .java or .C files use //
   if file_name =~ '\.cpp$' || file_name =~ '\.hpp$' || file_name =~ '\.java$' || file_name =~ '\.php[2345]\?$' || file_name =~ '\.C$'
     execute ":silent! normal :nohlsearch\<CR>:s/\\/\\///\<CR>:nohlsearch\<CR>=="
+  " for .fs or .fsi //
+  elseif file_name =~ '\.fs$' || file_name =~ '\.fsi$'
+    execute ":silent! normal :nohlsearch\<CR>:s/\\/\\///\<CR>:nohlsearch\<CR>=="
   " for .ml or .mli
   elseif file_name =~ '\.ml$' || file_name =~ '\.mli$' || file_name =~ '\.mll$' || file_name =~ '\.mly$'
     execute ":silent! normal :nohlsearch\<CR>:s/(\\*//\<CR>:nohlsearch\<CR>"
@@ -233,6 +239,9 @@ function! RangeCommentLine()
 
   " for .cpp or .hpp or .java or .C files use //
   if file_name =~ '\.cpp$' || file_name =~ '\.hpp$' || file_name =~ '\.java$' || file_name =~ '\.php[2345]\?$' || file_name =~ '\.C$'
+    execute ":silent! normal :s/\\S/\\/\\/\\0/\<CR>:nohlsearch<CR>=="
+  " for .fs or .fsi //
+  elseif file_name =~ '\.fs$' || file_name =~ '\.fsi$'
     execute ":silent! normal :s/\\S/\\/\\/\\0/\<CR>:nohlsearch<CR>=="
   " for .c or .h or .pc or .css files use /* */
   elseif file_name =~ '\.c$' || file_name =~ '\.h$' || file_name =~ '\.pc$' || file_name =~ '\.css$' || file_name =~ '\.js$' || file_name =~ '\.ts$'
@@ -306,6 +315,9 @@ function! RangeUnCommentLine()
 
   " for .cpp or .hpp or .java files use //
   if file_name =~ '\.cpp$' || file_name =~ '\.hpp$' || file_name =~ '\.java$' || file_name =~ '\.php[2345]\?$' || file_name =~ '\.C$'
+    execute ":silent! normal :s/\\/\\///\<CR>:nohlsearch\<CR>=="
+  " for .fs or .fsi //
+  elseif file_name =~ '\.fs$' || file_name =~ '\.fsi$'
     execute ":silent! normal :s/\\/\\///\<CR>:nohlsearch\<CR>=="
   " for .c or .h or .pc or .css files use /* */
   elseif file_name =~ '\.c$' || file_name =~ '\.h$' || file_name =~ '\.pc$' || file_name =~ '\.css$' || file_name =~ '\.js$' || file_name =~ '\.ts$'
