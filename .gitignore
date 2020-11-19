@@ -1,2 +1,4 @@
 *.netrwhist
 src/.vim/autoload/vimerl_cache
+src/.vim/bundle/
+src/.vim/bundle.disabled/
