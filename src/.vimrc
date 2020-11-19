@@ -8,19 +8,22 @@ execute pathogen#infect()
 " Defaults
 "==============================================================================
 
+let g:coc_global_extensions=[ 'coc-omnisharp' ]
+
 "------------------------------------------------------------------------------
 " General
 "------------------------------------------------------------------------------
 set nocompatible            " Because plain vi is a bit annoying
 set nu                      " Line numbers in gutter
+"set rnu                    " Relative number. relativenumber rnu norelativenumber nornu
 set ruler                   " Line and column numbers in status
 set splitright splitbelow   " Split window order
 set bs=2                    " Enable backspace key
 set history=1000            " Bump history from default of 20
 set modeline
-set modelines=1
+set modelines=2
 set ttimeoutlen=100         " Reduce delay when addinng libe above ("O")
-set fileformats=unix
+"set fileformats=unix
 filetype on
 filetype plugin on
 
@@ -51,10 +54,10 @@ filetype indent on
 set autoindent
 set smartindent
 set expandtab
-set tabstop=4
+set tabstop=8
 set softtabstop=4
 set shiftwidth=4
-set textwidth=0
+set textwidth=0  " What is the point of this again? Prevent auto-wrapping?
 
 
 "------------------------------------------------------------------------------
@@ -82,6 +85,9 @@ match  ErrorMsg '\s\+$'  " Trailing whitespace
 " C
 autocmd FileType c set noexpandtab | set shiftwidth=8 | set tabstop=8 | set softtabstop=8
 
+" TypeScript
+autocmd FileType typescript set noexpandtab | set shiftwidth=8 | set tabstop=8 | set softtabstop=8
+
 " R
 autocmd FileType r set tabstop=2 | set softtabstop=2 | set shiftwidth=2
 
@@ -92,7 +98,7 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType gitcommit set spell
 
 " Markdown
-autocmd FileType markdown set spell
+"autocmd FileType markdown set spell
 
 " HTML
 autocmd FileType html set spell
@@ -115,11 +121,23 @@ autocmd FileType mma set tabstop=2 | set softtabstop=2 | set shiftwidth=2
 " F#
 autocmd FileType fsharp set tabstop=4 | set softtabstop=4 | set shiftwidth=4
 
+" twtxt.txt
+autocmd BufNewFile,BufRead twtxt.txt set filetype=conf | set noexpandtab
+
+" Scheme
+autocmd FileType scheme set tabstop=2 | set softtabstop=2 | set shiftwidth=2
+
 " -----------------------------------------------------------------------------
 " TypeScript
 " -----------------------------------------------------------------------------
 "let g:tsuquyomi_completion_detail = 1
 "let g:tsuquyomi_use_local_typescript = 0
+"let g:syntastic_typescript_checkers = ['tsuquyomi']
+
+" -----------------------------------------------------------------------------
+" Racket
+" -----------------------------------------------------------------------------
+let g:syntastic_enable_racket_racket_checker = 0
 
 " -----------------------------------------------------------------------------
 " OCaml
