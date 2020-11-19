@@ -127,6 +127,9 @@ autocmd BufNewFile,BufRead twtxt.txt set filetype=conf | set noexpandtab
 " Scheme
 autocmd FileType scheme set tabstop=2 | set softtabstop=2 | set shiftwidth=2
 
+" Racket
+autocmd FileType racket setlocal equalprg=scmindent.rkt
+
 " -----------------------------------------------------------------------------
 " TypeScript
 " -----------------------------------------------------------------------------
